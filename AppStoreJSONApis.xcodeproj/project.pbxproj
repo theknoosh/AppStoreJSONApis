@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16570147226792BE00B58B0C /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570146226792BE00B58B0C /* VerticalStackView.swift */; };
 		1659CD3622663763009CBB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD3522663763009CBB19 /* AppDelegate.swift */; };
 		1659CD3822663763009CBB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD3722663763009CBB19 /* ViewController.swift */; };
 		1659CD3B22663763009CBB19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1659CD3922663763009CBB19 /* Main.storyboard */; };
 		1659CD3D22663764009CBB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1659CD3C22663764009CBB19 /* Assets.xcassets */; };
 		1659CD4022663764009CBB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1659CD3E22663764009CBB19 /* LaunchScreen.storyboard */; };
+		1659CD482266385D009CBB19 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD472266385D009CBB19 /* BaseTabBarController.swift */; };
+		1659CD4D2266B92A009CBB19 /* AppSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD4C2266B92A009CBB19 /* AppSearchController.swift */; };
+		1659CD502266C071009CBB19 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD4F2266C071009CBB19 /* SearchResultCell.swift */; };
+		1659CD532266FB6F009CBB19 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD522266FB6F009CBB19 /* UIView+Layout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16570146226792BE00B58B0C /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		1659CD3222663763009CBB19 /* AppStoreJSONApis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreJSONApis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1659CD3522663763009CBB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1659CD3722663763009CBB19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,10 @@
 		1659CD3C22663764009CBB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1659CD3F22663764009CBB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1659CD4122663764009CBB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1659CD472266385D009CBB19 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		1659CD4C2266B92A009CBB19 /* AppSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchController.swift; sourceTree = "<group>"; };
+		1659CD4F2266C071009CBB19 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		1659CD522266FB6F009CBB19 /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,9 @@
 		1659CD3422663763009CBB19 /* AppStoreJSONApis */ = {
 			isa = PBXGroup;
 			children = (
+				1659CD512266FB62009CBB19 /* Helpers */,
+				1659CD4E2266C030009CBB19 /* Views */,
+				1659CD492266B87C009CBB19 /* ViewControllers */,
 				1659CD3522663763009CBB19 /* AppDelegate.swift */,
 				1659CD3722663763009CBB19 /* ViewController.swift */,
 				1659CD3922663763009CBB19 /* Main.storyboard */,
@@ -62,6 +75,32 @@
 				1659CD4122663764009CBB19 /* Info.plist */,
 			);
 			path = AppStoreJSONApis;
+			sourceTree = "<group>";
+		};
+		1659CD492266B87C009CBB19 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1659CD472266385D009CBB19 /* BaseTabBarController.swift */,
+				1659CD4C2266B92A009CBB19 /* AppSearchController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1659CD4E2266C030009CBB19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1659CD4F2266C071009CBB19 /* SearchResultCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1659CD512266FB62009CBB19 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1659CD522266FB6F009CBB19 /* UIView+Layout.swift */,
+				16570146226792BE00B58B0C /* VerticalStackView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +176,11 @@
 			files = (
 				1659CD3822663763009CBB19 /* ViewController.swift in Sources */,
 				1659CD3622663763009CBB19 /* AppDelegate.swift in Sources */,
+				1659CD532266FB6F009CBB19 /* UIView+Layout.swift in Sources */,
+				1659CD482266385D009CBB19 /* BaseTabBarController.swift in Sources */,
+				1659CD4D2266B92A009CBB19 /* AppSearchController.swift in Sources */,
+				1659CD502266C071009CBB19 /* SearchResultCell.swift in Sources */,
+				16570147226792BE00B58B0C /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
