@@ -18,6 +18,35 @@ class AppSearchController: UICollectionViewController, UICollectionViewDelegateF
         collectionView.backgroundColor = .white
         
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellid)
+        
+        fetchITunesApps() // Get ITunes JSON data through apple itunes API
+    }
+    
+    fileprivate func fetchITunesApps(){
+        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+        guard let url = URL(string: urlString) else {return}
+        
+        // fetch data from internet
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            if let err = err {
+                print("Failed to fetch apps:", err)
+                return
+            }
+            // success
+            
+            guard let data = data else {return}
+            
+            do {
+                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
+                
+                searchResult.results.forEach({print($0.trackName, $0.primaryGenreName)})
+                
+            } catch {
+                print("Failed to decode JSON", error)
+            }
+            
+            
+        }.resume() // fires off request
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -25,7 +54,8 @@ class AppSearchController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath) as! SearchResultCell
+        cell.nameLabel.text = "Here is my name"
         return cell
     }
     
