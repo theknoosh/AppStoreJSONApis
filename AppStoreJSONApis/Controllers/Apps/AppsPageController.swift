@@ -23,6 +23,8 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         fetchData()
     }
     
+    var PopularAppsGames: AppGroup?
+    
     fileprivate func fetchData(){
         print("Fetching data...")
         Service.shared.fetchGames { (appGroup, err) in
@@ -30,7 +32,10 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
                 print("Failed to fetch game:", err)
                 return
             }
-            print(appGroup?.feed.results)
+            self.PopularAppsGames = appGroup
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -45,12 +50,17 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
+        
+        cell.titleLabel.text = PopularAppsGames?.feed.title
+        cell.horizontalController.appGroup = PopularAppsGames
+        cell.horizontalController.collectionView.reloadData()
+        
         return cell
         
     }
