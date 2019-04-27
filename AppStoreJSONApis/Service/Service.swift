@@ -39,8 +39,28 @@ class Service {
             }.resume() // fires off request
     }
     
-    func fetchGames(completion: @escaping (AppGroup?, Error?) -> ()) {
-        guard let url = URL(string: "https://rss.itunes.apple.com/api/v1/us/ios-apps/new-apps-we-love/all/50/explicit.json")
+    func fetchPopular(completion: @escaping (AppGroup?, Error?) -> ()) {
+        let urlString = "https://rss.itunes.apple.com/api/v1/us/ios-apps/new-apps-we-love/all/50/explicit.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+        
+    }
+    
+    func fetchTopFree(completion: @escaping (AppGroup?, Error?) -> ()) {
+        let urlString = "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-free/all/50/explicit.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+        
+    }
+    
+    func fetchTopGrossing(completion: @escaping (AppGroup?, Error?) -> ()) {
+        let urlString = "https://rss.itunes.apple.com/api/v1/us/ios-apps/top-grossing/all/50/explicit.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+        
+    }
+    
+    // Helper
+    func fetchAppGroup(urlString: String, completion: @escaping (AppGroup?, Error?)-> Void){
+        
+        guard let url = URL(string: urlString)
             else {return}
         URLSession.shared.dataTask(with: url){ (data, resp, err) in
             if let err = err {

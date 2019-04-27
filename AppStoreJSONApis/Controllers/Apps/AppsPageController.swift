@@ -23,19 +23,56 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         fetchData()
     }
     
-    var PopularAppsGames: AppGroup?
+//    var PopularAppsGames: AppGroup?
+    var groups = [AppGroup]()
     
     fileprivate func fetchData(){
-        print("Fetching data...")
-        Service.shared.fetchGames { (appGroup, err) in
-            if let err = err {
-                print("Failed to fetch game:", err)
-                return
+        
+        var group1: AppGroup?
+        var group2: AppGroup?
+        var group3: AppGroup?
+        
+        // Help you sync your data fetches together
+        let dispatchGroup = DispatchGroup()
+
+        dispatchGroup.enter()
+        Service.shared.fetchPopular { (appGroup, err) in
+            print("1. Done with popular")
+            
+            dispatchGroup.leave()
+            group1 = appGroup
+            
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopFree { (appGroup, err) in
+            print("2. Done with top free")
+
+            dispatchGroup.leave()
+            group2 = appGroup
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchTopGrossing { (appGroup, err) in
+            print("3. Done with Top Grossing")
+            
+            dispatchGroup.leave()
+            group3 = appGroup
+        }
+        
+        // completion
+        dispatchGroup.notify(queue: .main) {
+            print("completed your dispatch group task...")
+            if let group = group1 {
+                self.groups.append(group)
             }
-            self.PopularAppsGames = appGroup
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            if let group = group2 {
+                self.groups.append(group)
             }
+            if let group = group3 {
+                self.groups.append(group)
+            }
+            self.collectionView.reloadData()
         }
     }
     
@@ -46,19 +83,21 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 300)
+        return .init(width: view.frame.width, height: 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return groups.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
         
-        cell.titleLabel.text = PopularAppsGames?.feed.title
-        cell.horizontalController.appGroup = PopularAppsGames
+        let appGroup = groups[indexPath.item]
+        
+        cell.titleLabel.text = appGroup.feed.title
+        cell.horizontalController.appGroup = appGroup
         cell.horizontalController.collectionView.reloadData()
         
         return cell
