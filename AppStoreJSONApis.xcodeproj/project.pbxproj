@@ -19,6 +19,7 @@
 		165597112271627600B0AC70 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165597102271627600B0AC70 /* AppsHeaderHorizontalController.swift */; };
 		165597132271666400B0AC70 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165597122271666400B0AC70 /* AppsHeaderCell.swift */; };
 		1655971722720AC100B0AC70 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1655971622720AC100B0AC70 /* AppGroup.swift */; };
+		165597192276091B00B0AC70 /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165597182276091B00B0AC70 /* SocialApp.swift */; };
 		16570147226792BE00B58B0C /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570146226792BE00B58B0C /* VerticalStackView.swift */; };
 		1659CD3622663763009CBB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD3522663763009CBB19 /* AppDelegate.swift */; };
 		1659CD3822663763009CBB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659CD3722663763009CBB19 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		165597102271627600B0AC70 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		165597122271666400B0AC70 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		1655971622720AC100B0AC70 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		165597182276091B00B0AC70 /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		16570146226792BE00B58B0C /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		1659CD3222663763009CBB19 /* AppStoreJSONApis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreJSONApis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1659CD3522663763009CBB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				1655968A2267B9B000B0AC70 /* SearchResult.swift */,
 				1655971622720AC100B0AC70 /* AppGroup.swift */,
+				165597182276091B00B0AC70 /* SocialApp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			files = (
 				1659CD3822663763009CBB19 /* ViewController.swift in Sources */,
 				1659CD3622663763009CBB19 /* AppDelegate.swift in Sources */,
+				165597192276091B00B0AC70 /* SocialApp.swift in Sources */,
 				1655970D2271455A00B0AC70 /* Extentions.swift in Sources */,
 				1655971722720AC100B0AC70 /* AppGroup.swift in Sources */,
 				1655968B2267B9B000B0AC70 /* SearchResult.swift in Sources */,

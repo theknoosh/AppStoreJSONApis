@@ -23,7 +23,7 @@ class AppsHeaderCell: UICollectionViewCell {
             imageView
         ], spacing: 12)
         
-        imageView.backgroundColor = .red
+//        imageView.backgroundColor = .red
         titleLabel.numberOfLines = 2
         companyLabel.textColor = .blue
         
