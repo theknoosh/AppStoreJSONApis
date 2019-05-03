@@ -18,7 +18,7 @@ class PreviewCell: UICollectionViewCell {
         
         backgroundColor = .white
         addSubview(previewLabel)
-        addSubview(horizontalController.view)
+        addSubview(horizontalController.view) 
         
         previewLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20))
         horizontalController.view.anchor(top: previewLabel.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 18, left: 0, bottom: 0, right: 0))
