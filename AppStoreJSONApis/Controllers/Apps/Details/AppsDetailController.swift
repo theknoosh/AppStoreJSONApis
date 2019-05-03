@@ -40,6 +40,8 @@ import UIKit
                     return
                 }
                 self.reviews = reviews
+                reviews?.feed.entry.forEach({print($0.rating.label)})
+                
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -116,5 +118,9 @@ import UIKit
         }
         
         return .init(width: view.frame.width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 9, bottom: 16, right: 0)
     }
  }
