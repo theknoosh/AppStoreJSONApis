@@ -20,16 +20,39 @@ import UIKit
             let urlString = "https://itunes.apple.com/lookup?id=\(appId ?? "")"
             Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
                 
+                if let err = err {
+                    print("Failed to decode details:", err)
+                    return
+                }
+                
                 let app = result?.results.first
                 self.app = app
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
             }
+            
+            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
+            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, err) in
+                
+                if let err = err {
+                    print("Failed to decode reviews:", err)
+                    return
+                }
+                self.reviews = reviews
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+//                reviews?.feed.entry.forEach({ (entry) in
+//                    print(entry.title.label, entry.author.name.label, entry.content.label)
+//                })
+            }
         }
     }
     
     var app: Result?
+    var reviews: Reviews?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +86,8 @@ import UIKit
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewCellID, for: indexPath) as! ReviewRowCell
             
+            cell.reviewsController.reviews = reviews
+            
             return cell
 
         }
@@ -91,6 +116,5 @@ import UIKit
         }
         
         return .init(width: view.frame.width, height: height)
-        
     }
  }
