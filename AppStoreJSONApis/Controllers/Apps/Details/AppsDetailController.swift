@@ -13,44 +13,17 @@ import UIKit
     let detailCellID = "detailCellID"
     let previewCellID = "previewCellID"
     let reviewCellID = "reviewCellID"
-
     
-    var appId: String! {
-        didSet {
-            let urlString = "https://itunes.apple.com/lookup?id=\(appId ?? "")"
-            Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
-                
-                if let err = err {
-                    print("Failed to decode details:", err)
-                    return
-                }
-                
-                let app = result?.results.first
-                self.app = app
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-            
-            let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
-            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, err) in
-                
-                if let err = err {
-                    print("Failed to decode reviews:", err)
-                    return
-                }
-                self.reviews = reviews
-                reviews?.feed.entry.forEach({print($0.rating.label)})
-                
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-//                reviews?.feed.entry.forEach({ (entry) in
-//                    print(entry.title.label, entry.author.name.label, entry.content.label)
-//                })
-            }
-        }
+    fileprivate let appId: String
+    
+    // Dependency injection constructor
+    init(appId: String) {
+        self.appId = appId
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     var app: Result?
@@ -66,6 +39,44 @@ import UIKit
         
         navigationItem.largeTitleDisplayMode = .never
         
+        fetchData()
+    }
+    
+    fileprivate func fetchData(){
+        
+        let urlString = "https://itunes.apple.com/lookup?id=\(appId)"
+        Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
+            
+            if let err = err {
+                print("Failed to decode details:", err)
+                return
+            }
+            
+            let app = result?.results.first
+            self.app = app
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId)/sortby=mostrecent/json?l=en&cc=us"
+        Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, err) in
+            
+            if let err = err {
+                print("Failed to decode reviews:", err)
+                return
+            }
+            self.reviews = reviews
+            reviews?.feed.entry.forEach({print($0.rating.label)})
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+            //                reviews?.feed.entry.forEach({ (entry) in
+            //                    print(entry.title.label, entry.author.name.label, entry.content.label)
+            //                })
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
