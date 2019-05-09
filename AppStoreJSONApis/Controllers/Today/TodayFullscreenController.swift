@@ -9,11 +9,15 @@
 import UIKit
 
 class TodayFullscreenController: UITableViewController {
+    
+    var dismissHandler: (() ->())?
+    var todayItem: TodayItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         
     }
     
@@ -32,12 +36,19 @@ class TodayFullscreenController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.item == 0 {
-            
-            return TodayFullscreenHeaderCell()
+            let headerCell = TodayFullscreenHeaderCell()
+            headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+            headerCell.todayCell.todayItem = todayItem
+            return headerCell
         }
         
         let cell = TodayFullscreenDescriptionCell()
         
         return cell
+    }
+    
+    @objc fileprivate func handleDismiss(button: UIButton){
+        button.isHidden = true
+        dismissHandler?()
     }
 }

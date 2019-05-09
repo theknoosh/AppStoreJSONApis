@@ -45,6 +45,7 @@
 		16CF40C62278DD22008B01E3 /* AppsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF40C52278DD22008B01E3 /* AppsDetailController.swift */; };
 		16CF40C9227931BF008B01E3 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF40C8227931BF008B01E3 /* AppDetailCell.swift */; };
 		16CF40CB227A7E56008B01E3 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF40CA227A7E56008B01E3 /* PreviewCell.swift */; };
+		16F4FF432283B45400DAC0FF /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F4FF422283B45400DAC0FF /* TodayItem.swift */; };
 		51B514D14086322EBFEB1ED1 /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026A48B2E3815F3CA24359E4 /* Pods_AppStoreJSONApis.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		16CF40C52278DD22008B01E3 /* AppsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailController.swift; sourceTree = "<group>"; };
 		16CF40C8227931BF008B01E3 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		16CF40CA227A7E56008B01E3 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		16F4FF422283B45400DAC0FF /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
 		6E2A67FBFAFE8E69CC55F355 /* Pods-AppStoreJSONApis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.debug.xcconfig"; sourceTree = "<group>"; };
 		B74905A9520125F174507503 /* Pods-AppStoreJSONApis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.release.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				1655971622720AC100B0AC70 /* AppGroup.swift */,
 				165597182276091B00B0AC70 /* SocialApp.swift */,
 				165DD2EA227BD9CC0013259C /* Reviews.swift */,
+				16F4FF422283B45400DAC0FF /* TodayItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				165596FF226CC4AC00B0AC70 /* BaseListController.swift in Sources */,
 				165B4AF8227A83F600F3DA88 /* PreviewScreenshotsController.swift in Sources */,
 				1655970B227143BB00B0AC70 /* AppRowCell.swift in Sources */,
+				16F4FF432283B45400DAC0FF /* TodayItem.swift in Sources */,
 				1659CD482266385D009CBB19 /* BaseTabBarController.swift in Sources */,
 				1655970F22715DD500B0AC70 /* AppsPageHeader.swift in Sources */,
 				165597132271666400B0AC70 /* AppsHeaderCell.swift in Sources */,
