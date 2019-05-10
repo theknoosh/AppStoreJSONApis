@@ -14,7 +14,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     let items = [
         TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .white),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything", backgroundColor: .yellow)
+        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything", backgroundColor: #colorLiteral(red: 0.9834489226, green: 0.9625311494, blue: 0.7273532748, alpha: 1))
     ]
     
     override func viewDidLoad() {
@@ -51,6 +51,8 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         addChild(todayFullscreenController)
         self.todayFullscreenController = todayFullscreenController
         
+//        self.collectionView.isUserInteractionEnabled = false
+        
         guard let cell = collectionView.cellForItem(at: indexPath) else {return}
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else {return}
         
@@ -76,6 +78,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.view.layoutIfNeeded() // starts the animation
             
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            
+            guard let cell = self.todayFullscreenController.tableView.cellForRow(at: [0,0]) as? TodayFullscreenHeaderCell else {return}
+            
+            cell.todayCell.topConstraint.constant = 48
+            cell.layoutIfNeeded()
+            
         }, completion: nil)
     }
     
@@ -99,6 +107,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.view.layoutIfNeeded() // starts the animation
             
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+            guard let cell = self.todayFullscreenController.tableView.cellForRow(at: [0,0]) as? TodayFullscreenHeaderCell else {return}
+            
+            cell.todayCell.topConstraint.constant = 24
+            cell.layoutIfNeeded()
+            
         }, completion: {_ in
             
             self.todayFullscreenController.view.removeFromSuperview()

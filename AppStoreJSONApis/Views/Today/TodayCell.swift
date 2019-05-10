@@ -10,12 +10,15 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
     
+    var topConstraint: NSLayoutConstraint!
+    
     var todayItem: TodayItem! {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
             imageView.image = todayItem.image
             descripionLabel.text = todayItem.description
+            backgroundColor = todayItem.backgroundColor
         }
     }
     
@@ -44,7 +47,11 @@ class TodayCell: UICollectionViewCell {
             descripionLabel
         ], spacing: 8)
         addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 24, left: 24, bottom: 24, right: 24))
+        stackView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 24, bottom: 24, right: 24))
+        self.topConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
+        self.topConstraint.isActive = true
+        
+//        stackView.fillSuperview(padding: .init(top: 44, left: 24, bottom: 24, right: 24))
         
     }
     
