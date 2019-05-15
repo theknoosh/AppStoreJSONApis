@@ -46,6 +46,8 @@
 		16CF40C9227931BF008B01E3 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF40C8227931BF008B01E3 /* AppDetailCell.swift */; };
 		16CF40CB227A7E56008B01E3 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CF40CA227A7E56008B01E3 /* PreviewCell.swift */; };
 		16F4FF432283B45400DAC0FF /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F4FF422283B45400DAC0FF /* TodayItem.swift */; };
+		16F4FF45228612D100DAC0FF /* TodayMultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F4FF44228612D100DAC0FF /* TodayMultipleAppCell.swift */; };
+		16F9B1E3228BDB4E00EFB60E /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F9B1E2228BDB4E00EFB60E /* BaseTodayCell.swift */; };
 		51B514D14086322EBFEB1ED1 /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026A48B2E3815F3CA24359E4 /* Pods_AppStoreJSONApis.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 		16CF40C8227931BF008B01E3 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		16CF40CA227A7E56008B01E3 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		16F4FF422283B45400DAC0FF /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
+		16F4FF44228612D100DAC0FF /* TodayMultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppCell.swift; sourceTree = "<group>"; };
+		16F9B1E2228BDB4E00EFB60E /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
 		6E2A67FBFAFE8E69CC55F355 /* Pods-AppStoreJSONApis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.debug.xcconfig"; sourceTree = "<group>"; };
 		B74905A9520125F174507503 /* Pods-AppStoreJSONApis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.release.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +249,8 @@
 				165DD2F0227D75190013259C /* TodayCell.swift */,
 				165D77C82280AA8500239848 /* TodayFullscreenDescriptionCell.swift */,
 				165D77CA2281236B00239848 /* TodayFullscreenHeaderCell.swift */,
+				16F4FF44228612D100DAC0FF /* TodayMultipleAppCell.swift */,
+				16F9B1E2228BDB4E00EFB60E /* BaseTodayCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -438,10 +444,12 @@
 				1659CD4D2266B92A009CBB19 /* AppSearchController.swift in Sources */,
 				1659CD502266C071009CBB19 /* SearchResultCell.swift in Sources */,
 				16CF40BF22780FA3008B01E3 /* HorizontalSnappingController.swift in Sources */,
+				16F9B1E3228BDB4E00EFB60E /* BaseTodayCell.swift in Sources */,
 				16559705226D8B9A00B0AC70 /* AppsHorizontalController.swift in Sources */,
 				16570147226792BE00B58B0C /* VerticalStackView.swift in Sources */,
 				165597112271627600B0AC70 /* AppsHeaderHorizontalController.swift in Sources */,
 				165D77C92280AA8500239848 /* TodayFullscreenDescriptionCell.swift in Sources */,
+				16F4FF45228612D100DAC0FF /* TodayMultipleAppCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
