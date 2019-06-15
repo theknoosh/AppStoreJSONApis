@@ -21,8 +21,6 @@ class BaseTabBarController: UITabBarController {
             createNavController(viewController: AppsPageController(), title: "Apps", imageName: "apps"),
             createNavController(viewController: AppSearchController(), title: "Search", imageName: "search")
         ]
-//        UICollectionViewController(collectionViewLayout: UICollectionViewLayout())
-        
     }
     
     fileprivate func createNavController(viewController:UIViewController, title:String, imageName:String)-> UIViewController {

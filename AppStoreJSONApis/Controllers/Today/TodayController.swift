@@ -14,9 +14,11 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 //    fileprivate let multCellId = "multCellId"
     
     let items = [
+        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These CarPlay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple),
         TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .white, cellType: .single),
         TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything", backgroundColor: #colorLiteral(red: 0.9834489226, green: 0.9625311494, blue: 0.7273532748, alpha: 1), cellType: .single),
-        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These CarPlay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple)
+        
+        
     ]
     
     override func viewDidLoad() {
@@ -26,9 +28,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         collectionView.backgroundColor = #colorLiteral(red: 0.890249042, green: 0.890249042, blue: 0.890249042, alpha: 1)
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.Celltype.single.rawValue)
-        collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.Celltype.multiple.rawValue)
-
-        
+        collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.Celltype.multiple.rawValue)        
     }
     
     var todayFullscreenController: TodayFullscreenController!
