@@ -34,6 +34,12 @@ class Service {
         
     }
     
+    func fetchGames(completion: @escaping (AppGroup?, Error?) -> ()) {
+        let urlString = "https://rss.itunes.apple.com/api/v1/us/ios-apps/new-games-we-love/all/10/explicit.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+        
+    }
+    
     // Helper
     func fetchAppGroup(urlString: String, completion: @escaping (AppGroup?, Error?)-> Void){
         
