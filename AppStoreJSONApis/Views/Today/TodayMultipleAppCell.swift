@@ -39,6 +39,7 @@ class TodayMultipleAppCell: BaseTodayCell {
         
         backgroundColor = .white
         layer.cornerRadius = 16
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

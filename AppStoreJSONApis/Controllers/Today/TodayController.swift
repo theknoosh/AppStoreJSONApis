@@ -10,17 +10,6 @@ import UIKit
 
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-//    fileprivate let cellId = "todayCellId"
-//    fileprivate let multCellId = "multCellId"
-    
-//    let items = [
-//        TodayItem.init(category: "THE DAILY LIST", title: "Top Grossing Games", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple),
-//        TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way", backgroundColor: .white, cellType: .single),
-//        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything", backgroundColor: #colorLiteral(red: 0.9834489226, green: 0.9625311494, blue: 0.7273532748, alpha: 1), cellType: .single),
-//        TodayItem.init(category: "MULTIPLE CELL", title: "Editors' Choice Games", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple)
-//
-//    ]
-    
     var items = [TodayItem]()
     
     // Spinner when loading
@@ -31,6 +20,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         aiv.hidesWhenStopped = true
         return aiv
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.superview?.setNeedsLayout()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +94,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         if items[indexPath.item].cellType == .multiple {
             let fullController = TodayMultipleAppsController(mode: .fullscreen)
             fullController.results = self.items[indexPath.item].apps
-            present(fullController, animated: true)
+            present(UINavigationController(rootViewController: fullController), animated: true)
             return
         }
         
@@ -198,7 +193,31 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         cell.todayItem = items[indexPath.item]
         
+        (cell as? TodayMultipleAppCell)?.multipleAppsViewController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMultipleAppsTap)))
+        
         return cell
+    }
+    
+    @objc fileprivate func handleMultipleAppsTap(gesture: UIGestureRecognizer) {
+       let collectionView = gesture.view
+        
+        var superview = collectionView?.superview
+        while superview != nil {
+            if let cell = superview as? TodayMultipleAppCell {
+                
+                guard let indexPath = self.collectionView.indexPath(for: cell) else {return}
+                
+                let apps = self.items[indexPath.item].apps
+                
+                let fullController = TodayMultipleAppsController(mode: .fullscreen)
+                
+                fullController.results = apps
+                present(BackEnabledNavigationController(rootViewController: fullController), animated: true)
+                return
+            }
+            superview = superview?.superview
+            
+        }
     }
     
     static let cellSize:CGFloat = 450

@@ -6,6 +6,7 @@
 //  Copyright © 2019 DARRELL A PAYNE. All rights reserved.
 //
 
+
 import UIKit
 
 class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateFlowLayout {
@@ -26,6 +27,11 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         dismiss(animated: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +45,9 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         
         collectionView.register(MultipleAppCell.self, forCellWithReuseIdentifier: cellId)
         
+        // Mark: Removes space above list
+        navigationController?.isNavigationBarHidden = true
+        
     }
     
     override var prefersStatusBarHidden: Bool {return true}
@@ -46,6 +55,13 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
     func setupCloseButton(){
         view.addSubview(closeButton)
         closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 16), size: .init(width: 44, height: 44))
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = self.results[indexPath.item].id
+        let appDetailController = AppsDetailController(appId: appId)
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.pushViewController(appDetailController, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -86,7 +102,7 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if mode == .fullscreen {
-            return .init(top: 12, left: 24, bottom: 12, right: 24)
+            return .init(top: 48, left: 24, bottom: 12, right: 24)
         }
         return .zero
     }
