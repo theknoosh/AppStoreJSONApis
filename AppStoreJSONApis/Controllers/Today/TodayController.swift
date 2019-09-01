@@ -257,7 +257,8 @@ class TodayController: BaseListController,UIGestureRecognizerDelegate, UICollect
             
             guard let cell = self.todayFullscreenController.tableView.cellForRow(at: [0,0]) as? TodayFullscreenHeaderCell else {return}
             
-            cell.closeButton.alpha = 0
+//            cell.closeButton.alpha = 0
+            self.todayFullscreenController.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
             
