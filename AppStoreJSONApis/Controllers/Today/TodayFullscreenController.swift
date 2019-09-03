@@ -42,6 +42,8 @@ class TodayFullscreenController: UIViewController, UITableViewDelegate, UITableV
         let height = UIApplication.shared.statusBarFrame.height
         tableView.contentInset = .init(top: 0, left: 0, bottom: height, right: 0)
         
+        setupFloatingControl()
+        
     }
     
     let closeButton: UIButton = {
@@ -49,6 +51,45 @@ class TodayFullscreenController: UIViewController, UITableViewDelegate, UITableV
         button.setImage(#imageLiteral(resourceName: "close_button"), for: .normal)
         return button
     }()
+    
+    
+    fileprivate func setupFloatingControl(){
+        let floatingContainerView = UIView()
+        floatingContainerView.clipsToBounds = true
+        view.addSubview(floatingContainerView)
+        floatingContainerView.layer.cornerRadius = 16
+        let bottomPadding = UIApplication.shared.statusBarFrame.height
+        floatingContainerView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: bottomPadding, right: 16), size: .init(width: 0, height: 90))
+        let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+        floatingContainerView.addSubview(blurVisualEffectView)
+        blurVisualEffectView.fillSuperview()
+        
+        // add subviews for floating container
+        let imageView = UIImageView(cornerRadius: 16)
+        imageView.image = todayItem?.image
+        imageView.constrainHeight(constant: 68)
+        imageView.constrainWidth(constant: 68)
+        
+        let getButton = UIButton(title: "GET")
+        getButton.setTitleColor(.white, for: .normal)
+        getButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        getButton.backgroundColor = .darkGray
+        getButton.layer.cornerRadius = 16
+        getButton.constrainWidth(constant: 80)
+        getButton.constrainHeight(constant: 32)
+        
+        let stackView = UIStackView(arrangedSubviews: [
+            imageView,
+            VerticalStackView(arrangedSubviews: [
+                UILabel(text: "Life Hack", font: .boldSystemFont(ofSize: 18)),
+                UILabel(text: "Utilizing your time", font: .systemFont(ofSize: 16))
+            ], spacing: 4),
+            getButton
+            ], customSpacing: 16)
+        floatingContainerView.addSubview(stackView)
+        stackView.fillSuperview(padding: .init(top: 0, left: 16, bottom: 0, right: 16))
+        stackView.alignment = .center
+    }
     
     fileprivate func setupCloseButton() {
         view.addSubview(closeButton)
